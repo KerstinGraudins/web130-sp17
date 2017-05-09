@@ -1,0 +1,62 @@
+/*
+mobile-first(min-width)
+FLEXBOX
+created by:Kerstin Graudins
+date:5/6/2017
+*/
+*, *:before, *:after{
+    box-sizing: border-box;
+}
+//mobile first
+@mixin forLargeScreens($media) {
+    @media (min-width: $media/16+em){ @content;}
+}
+//main container
+.main-container{
+    width:100%; //can change this
+    max-width:1200px; //can change
+    padding: 0 1.67%;
+    margin: auto;
+}
+//Flexbox container
+.flex-container {
+    margin-bottom:10px;
+    //removes margin from last container
+    &:last-of-type{
+        margin-bottom: 0
+    }
+    @include forLargeScreens(640){
+        display:flex;
+    }
+}
+//DIVs inside the flex container
+[class*="level-"]{
+    width:100%;
+    @include forLargeScreens(640){
+        margin:0 .83%;
+    }
+    &:first-of-type { margin-left: 0;}
+    &:last-of-type {margin-right: 0;}
+}
+//NAV
+nav{
+    width: 100%;
+    @include forLargeScreens(640){
+        width: 33%;
+        margin-right: 1.67%;
+    }
+}
+//CONTENT AREA
+section {
+    width: 100%;
+    @include forLargeScreens(640) {
+        width:65.33%;
+    }
+}
+//DIFFERENT WIDTH CONTAINERS
+.content- {
+    @include forLargeScreens(640){
+        &a { width: 30%;}
+        &c { width: 42%;}
+    }
+}

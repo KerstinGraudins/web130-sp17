@@ -1,0 +1,118 @@
+@import 'media';
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+$ltBlue: #2DA9FF;
+$dkBlue: #0A75BE;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata';
+}
+.hidden{
+    display:none;
+}
+.show{
+    display:inherit;
+    z-index: 1;
+}
+nav{
+    background-color:$ltBlue;
+    position: relative;
+    width:100%;
+    a {
+        display:block;
+        text-align: center;
+        line-height: 50px;
+        color:white;
+        text-decoration:none;
+        background-color:$ltBlue;
+    }
+    a:hover{
+        background-color:$dkBlue;
+    }
+   
+}
+ul {
+    display:none;
+    list-style-type: none;
+    @include forLargeScreens(640){
+      display:flex;
+    }
+    li{
+        @include forLargeScreens(640){
+           width:100%; 
+        }
+        @include forLargeScreens(980){
+            width: 10%;
+            
+        }
+    }
+}
+li.dropdown{
+    position:relative;
+    //display: inline-block;
+   //text-align: center;
+}
+.dropdown-content{
+    display:inline-block;
+   // position:absolute;   
+}
+//.dropdown-content a{
+    //text-decoration: none;
+    //display:block;
+   // &:hover{
+        //display: block;
+   // }
+//}
+li.dropdown:hover {
+    ul{
+        @include forLargeScreens(640)
+        {
+            display: inline !important;
+        }
+      }
+}
+ul#sub-menu {
+    display:none;
+    width:100%;
+        @include forLargeScreens(640)
+        {
+            position: fixed;
+            left:0;
+        }
+       @include forLargeScreens(980)
+       {
+         position:absolute;
+           left:0;
+       }
+     li {
+            @include forLargeScreens(640)
+            {
+            width:25%;
+            float:left;
+            }
+        @include forLargeScreens(980)
+            {
+            
+            float:none;
+            text-align:left;
+            width:100%;
+            line-height: 2em;
+            }
+        }
+}
+#mobile-only{
+    position:relative;
+    @include forLargeScreens(640){
+        display:none;
+    };
+    img {
+        position: absolute;
+        left:5%;
+        top: 15px;
+        height:15px;
+        width:auto;
+    }
+}
